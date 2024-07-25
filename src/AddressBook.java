@@ -1,3 +1,5 @@
 public class AddressBook {
-    //System.out.println("Hello");
+    AddressBook(){
+        System.out.println("Hello");
+    }
 }
