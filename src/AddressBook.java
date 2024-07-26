@@ -8,7 +8,22 @@ public class AddressBook {
     String state;
     String email;
     long zip,phone_number;
-    static ArrayList<AddressBook> adb=new ArrayList<>();
+    AddressBook(){
+        //Constructor
+    }
+    static ArrayList<AddressBook> adb;
+    static Map<String,ArrayList<AddressBook>> adb_owners=new HashMap<>();
+    AddressBook(String name) {
+        if(!adb_owners.containsKey(name)) {
+            adb=new ArrayList<>();
+            adb_owners.put(name,adb);
+            System.out.println(">>>Addressbook created");
+        }
+        else{
+            adb=adb_owners.get(name);
+            System.out.println(">>>Addressbook switched to "+name);
+        }
+    }
     void add(String first,String last,String address,String city,String state,Long zip,long phone,String email){
         this.firstname=first;
         this.lastname=last;
@@ -20,6 +35,33 @@ public class AddressBook {
         this.email=email;
         System.out.println(">>>New contact added!");
         adb.add(this);
+    }
+    static void display(String name){
+        int a=0;
+        for(Map.Entry<String,ArrayList<AddressBook>> mp:adb_owners.entrySet()){
+            if(mp.getKey().equals(name)){
+                a=1;
+                if(mp.getValue().isEmpty()){
+                    System.out.println(">>>No contact added in this addressbook");
+                    break;
+                }
+                for(AddressBook adr:mp.getValue()){
+                    System.out.println("Details:-");
+                    System.out.println("Firstname: "+adr.firstname);
+                    System.out.println("Lastname: "+adr.lastname);
+                    System.out.println("Address: "+adr.address);
+                    System.out.println("City: "+adr.city);
+                    System.out.println("State: "+adr.state);
+                    System.out.println("Zipcode: "+adr.zip);
+                    System.out.println("Phone number: "+adr.phone_number);
+                    System.out.println("Mail Id: "+adr.email);
+                }
+                break;
+            }
+        }
+        if(a==0){
+            System.out.println(">>>AddressBook not found");
+        }
     }
     static void find(String firstname){
         int a=0;

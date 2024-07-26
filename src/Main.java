@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
 
-    static class contact {
+    static class contact { //This is used only for adding multiple contacts
         String fn;
         String ln;
         String adr;
@@ -22,17 +22,23 @@ public class Main {
         String str;
         do {
             System.out.println("\nMenu Driven Program:- ");
-            System.out.println("1. Add new contact");
-            System.out.println("2. Edit contact");
-            System.out.println("3. Delete Contact");
-            System.out.println("4. Add multiple contacts");
-            System.out.println("5. Refactor multiple contacts");
-            System.out.println("6. Display details");
-            System.out.println("7. Exit");
+            System.out.println("1. Add new AddressBook");
+            System.out.println("2. Add new contact");
+            System.out.println("3. Edit contact");
+            System.out.println("4. Delete Contact");
+            System.out.println("5. Add multiple contacts");
+            System.out.println("6. Refactor multiple contacts");
+            System.out.println("7. Display details");
+            System.out.println("8. Exit");
             System.out.print("Select any option: ");
             op=sc.nextInt();
             switch(op){
                 case 1:
+                    System.out.print("Enter addressbook name: ");
+                    str=sc.next();
+                    new AddressBook(str);
+                    break;
+                case 2:
                     AddressBook ad=new AddressBook();
                     System.out.print("Enter first name: ");
                     String a=sc.next();
@@ -52,17 +58,17 @@ public class Main {
                     String h=sc.next();
                     ad.add(a,b,c,d,e,f,g,h);
                     break;
-                case 2:
+                case 3:
                     System.out.print("Enter first name: ");
                     str=sc.next();
                     AddressBook.edit(str);
                     break;
-                case 3:
+                case 4:
                     System.out.print("Enter first name: ");
                     str=sc.next();
                     AddressBook.delete(str);
                     break;
-                case 4:
+                case 5:
                     System.out.print("Enter number of contacts to add: ");
                     int n=sc.nextInt();
                     ArrayList<contact> ls=new ArrayList<>();
@@ -89,20 +95,22 @@ public class Main {
                     }
                     AddressBook.multiple_contacts(ls);
                     break;
-                case 5:
-                    System.out.println("Option5");
-                    break;
                 case 6:
+                    System.out.print("Enter addressbook name: ");
+                    str=sc.next();
+                    AddressBook.display(str);
+                    break;
+                case 7:
                     System.out.print("Enter first name: ");
                     str=sc.next();
                     AddressBook.find(str);
                     break;
-                case 7:
+                case 8:
                     System.out.println(">>>Program closed by the user");
                     break;
                 default:
                     System.out.println(">>>Select valid option");
             }
-        }while(op!=7);
+        }while(op!=8);
     }
 }
