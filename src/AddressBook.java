@@ -125,7 +125,6 @@ public class AddressBook {
         }
     }
     static void multiple_contacts(ArrayList<Main.contact> ls){
-        //adb.addAll(ls);
         List<AddressBook> lsd=new ArrayList<>();
         for(Main.contact arr:ls){
             AddressBook ad=new AddressBook();
