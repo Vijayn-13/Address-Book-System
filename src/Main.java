@@ -8,6 +8,7 @@ public class Main {
         System.out.println("Hello and welcome!");
         Scanner sc=new Scanner(System.in);
         int op;
+        String str;
         do {
             System.out.println("\nMenu Driven Program:- ");
             System.out.println("1. Add new contact");
@@ -22,7 +23,6 @@ public class Main {
             switch(op){
                 case 1:
                     AddressBook ad=new AddressBook();
-                    //String first,String last,String address,String city,String state,Long zip,long phone,String email
                     System.out.print("Enter first name: ");
                     String a=sc.next();
                     System.out.print("Enter last name: ");
@@ -42,7 +42,9 @@ public class Main {
                     ad.add(a,b,c,d,e,f,g,h);
                     break;
                 case 2:
-                    System.out.println("Option2");
+                    System.out.print("Enter first name: ");
+                    str=sc.next();
+                    AddressBook.edit(str);
                     break;
                 case 3:
                     System.out.println("Option3");
@@ -55,7 +57,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.print("Enter first name: ");
-                    String str=sc.next();
+                    str=sc.next();
                     AddressBook.find(str);
                     break;
                 case 7:
