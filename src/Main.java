@@ -3,6 +3,17 @@
 import java.util.*;
 
 public class Main {
+
+    static class contact {
+        String fn;
+        String ln;
+        String adr;
+        String city;
+        String state;
+        Long zip;
+        long phone;
+        String email;
+    }
     public static void main(String[] args) {
 
         System.out.println("Hello and welcome!");
@@ -47,10 +58,36 @@ public class Main {
                     AddressBook.edit(str);
                     break;
                 case 3:
-                    System.out.println("Option3");
+                    System.out.print("Enter first name: ");
+                    str=sc.next();
+                    AddressBook.delete(str);
                     break;
                 case 4:
-                    System.out.println("Option4");
+                    System.out.print("Enter number of contacts to add: ");
+                    int n=sc.nextInt();
+                    ArrayList<contact> ls=new ArrayList<>();
+                    for(int i=0;i<n;i++){
+                        System.out.println("\nEnter details for contact "+(i+1)+":-");
+                        Main.contact ct=new Main.contact();
+                        System.out.print("Enter first name: ");
+                        ct.fn=sc.next();
+                        System.out.print("Enter last name: ");
+                        ct.ln=sc.next();
+                        System.out.print("Enter address: ");
+                        ct.adr=sc.next();
+                        System.out.print("Enter city: ");
+                        ct.city=sc.next();
+                        System.out.print("Enter state: ");
+                        ct.state=sc.next();
+                        System.out.print("Enter Zipcode: ");
+                        ct.zip=sc.nextLong();
+                        System.out.print("Enter phone number: ");
+                        ct.phone=sc.nextLong();
+                        System.out.print("Enter mail-id: ");
+                        ct.email=sc.next();
+                        ls.add(ct);
+                    }
+                    AddressBook.multiple_contacts(ls);
                     break;
                 case 5:
                     System.out.println("Option5");

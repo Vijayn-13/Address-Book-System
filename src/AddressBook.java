@@ -1,12 +1,14 @@
 import java.util.*;
 public class AddressBook {
     static Scanner sc=new Scanner(System.in);
-    String firstname,lastname,address,city,state,email;
+    String firstname;
+    String lastname;
+    String address;
+    String city;
+    String state;
+    String email;
     long zip,phone_number;
     static ArrayList<AddressBook> adb=new ArrayList<>();
-    AddressBook(){
-        System.out.println("Hello!!");
-    }
     void add(String first,String last,String address,String city,String state,Long zip,long phone,String email){
         this.firstname=first;
         this.lastname=last;
@@ -95,7 +97,8 @@ public class AddressBook {
                             System.out.println("E-mail Updated!");
                             break;
                         case 8:
-                            System.out.println("Contact updated!");
+                            System.out.println(">>>Contact updated!");
+                            System.out.println(">>>To view updated details, Select option 6");
                             break;
                         default:
                             System.out.println(">>>Select valid option to edit");
@@ -106,5 +109,37 @@ public class AddressBook {
         if(a==0){
             System.out.println(">>>Contact not found");
         }
+    }
+    static void delete(String firstname){
+        int a=0;
+        for(AddressBook ad:adb){
+            if(ad.firstname.equals(firstname)){
+                a=1;
+                adb.remove(ad);
+                System.out.println(">>>Contact deleted");
+                break;
+            }
+        }
+        if(a==0){
+            System.out.println(">>>Contact not found");
+        }
+    }
+    static void multiple_contacts(ArrayList<Main.contact> ls){
+        //adb.addAll(ls);
+        List<AddressBook> lsd=new ArrayList<>();
+        for(Main.contact arr:ls){
+            AddressBook ad=new AddressBook();
+            ad.firstname=arr.fn;
+            ad.lastname=arr.ln;
+            ad.address=arr.adr;
+            ad.city=arr.city;
+            ad.state=arr.state;
+            ad.zip=arr.zip;
+            ad.phone_number=arr.phone;
+            ad.email=arr.email;
+            lsd.add(ad);
+        }
+        adb.addAll(lsd);
+        System.out.println(">>>Multiple contacts added successfully!");
     }
 }
